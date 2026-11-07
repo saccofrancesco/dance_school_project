@@ -1,0 +1,25 @@
+{% extends "base_list.html" %}
+
+{% block title %}Sedi - Dance School{% endblock %}
+
+{% block list-header %}
+    <th scope="col">Name</th>
+    <th scope="col">Street</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Email</th>
+{% endblock %}
+
+{% block list-body %}
+    {% for object in schools %}
+        <tr>
+            <td>{{ object.name }}</td>
+            <td>{{ object.street }}</td>
+            <td>{{ object.phone }}</td>
+            <td>{{ object.email }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">Nessuna sede disponibile.</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
