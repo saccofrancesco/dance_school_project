@@ -12,3 +12,6 @@ class School(models.Model):
     phone = models.CharField(max_length=30)
     email = models.EmailField()
     vat = models.CharField(max_length=20, verbose_name="partita IVA")
+
+    def __str__(self):
+        return self.name
