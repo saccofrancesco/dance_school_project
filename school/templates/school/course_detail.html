@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.subject }} - Dance School{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1>{{ course.subject }}</h1>
+        </header>
+        <dl>
+            <dt>Day</dt>
+            <dd>{{ course.day_of_the_week.name }}</dd>
+
+            <dt>Starting hour</dt>
+            <dd>{{ course.starting_hour|time:"H:i" }}</dd>
+
+            <dt>Classroom</dt>
+            <dd>{{ course.classroom.name }}</dd>
+
+            <dt>School</dt>
+            <dd>{{ course.school.name }}</dd>
+        </dl>
+    </article>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_list.html" %}
+
+{% block title %}Corsi - Dance School{% endblock %}
+
+{% block list-header %}
+    <th scope="col">Subject</th>
+    <th scope="col">Day</th>
+    <th scope="col">Starting hour</th>
+    <th scope="col">Classroom</th>
+    <th scope="col">School</th>
+{% endblock %}
+
+{% block list-body %}
+    {% for object in courses %}
+        <tr>
+            <td>{{ object.subject }}</td>
+            <td>{{ object.day_of_the_week.name }}</td>
+            <td>{{ object.starting_hour|time:"H:i" }}</td>
+            <td>{{ object.classroom.name }}</td>
+            <td>{{ object.school.name }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5">Nessun corso disponibile.</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
