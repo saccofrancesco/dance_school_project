@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ classroom.name }} - Dance School{% endblock %}
+
+{% block content %}
+    <article>
+        <header>
+            <h1>{{ classroom.name }}</h1>
+        </header>
+        <dl>
+            <dt>Capacity</dt>
+            <dd>{{ classroom.capacity }}</dd>
+        </dl>
+    </article>
+{% endblock %}

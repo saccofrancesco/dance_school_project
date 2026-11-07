@@ -1,0 +1,21 @@
+{% extends "base_list.html" %}
+
+{% block title %}Aule - Dance School{% endblock %}
+
+{% block list-header %}
+    <th scope="col">Name</th>
+    <th scope="col">Capacity</th>
+{% endblock %}
+
+{% block list-body %}
+    {% for object in classrooms %}
+        <tr>
+            <td>{{ object.name }}</td>
+            <td>{{ object.capacity }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="2">Nessuna aula disponibile.</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
