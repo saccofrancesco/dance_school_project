@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                {% block list-header %}{% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block list-body %}{% endblock %}
+        </tbody>
+    </table>
+{% endblock %}
