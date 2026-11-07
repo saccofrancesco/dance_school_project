@@ -10,13 +10,13 @@
 <body>
     <header class="site-header">
         <nav class="navbar container" aria-label="Navigazione principale">
-            <a class="brand" href="{% url 'test' %}" aria-label="Dance School, pagina iniziale">
+            <a class="brand" href="{% url 'home' %}" aria-label="Dance School, pagina iniziale">
                 <span class="brand-mark" aria-hidden="true">DS</span>
                 <span class="brand-name">Dance School</span>
             </a>
 
             <div class="nav-links">
-                <a class="nav-link" href="/about.html">Chi siamo</a>
+                <a class="nav-link" href="{% url 'about' %}">Chi siamo</a>
                 <a class="nav-link" href="#register-modal" data-modal-open="register-modal">Registrati</a>
                 <a class="nav-link nav-link--accent" href="#login-modal" data-modal-open="login-modal">Accedi</a>
             </div>
@@ -35,7 +35,7 @@
             <!-- Sostituisci questi recapiti con quelli reali della scuola. -->
             <div class="footer-contact">
                 <a href="tel:+390000000000">Telefono: +39 000 000 0000</a>
-                <a href="mailto:info@scuoladidanza.it">Email: info@scuoladidanza.it</a>
+                <a href="mailto:info@danceschool.example">Email: info@danceschool.example</a>
             </div>
         </div>
     </footer>
