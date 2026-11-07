@@ -1,0 +1,21 @@
+{% extends "base_list.html" %}
+
+{% block title %}Giorni della settimana - Dance School{% endblock %}
+
+{% block list-header %}
+    <th scope="col">Number</th>
+    <th scope="col">Name</th>
+{% endblock %}
+
+{% block list-body %}
+    {% for object in days %}
+        <tr>
+            <td>{{ object.number }}</td>
+            <td>{{ object.name }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="2">Nessun giorno disponibile.</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
