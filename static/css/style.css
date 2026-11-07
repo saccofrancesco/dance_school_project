@@ -215,6 +215,147 @@ main {
     background: #43284f;
 }
 
+.home-hero {
+    padding: clamp(2rem, 7vw, 4.5rem);
+    border-radius: 1.25rem;
+    background: linear-gradient(125deg, #eee3ed, #f8e9e2 72%, #f4e1d0);
+}
+
+.eyebrow,
+.carousel-category {
+    margin: 0 0 0.65rem;
+    color: #8b4b72;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.home-hero h1 {
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 4.6rem);
+    line-height: 1.02;
+}
+
+.home-hero > p:not(.eyebrow) {
+    max-width: 42rem;
+    margin-block: 1.2rem 1.6rem;
+    color: #484359;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 2.9rem;
+    align-items: center;
+    padding: 0.7rem 1.15rem;
+    border-radius: 999px;
+    background: #5a3768;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: #43284f;
+}
+
+.home-carousel,
+.home-copy {
+    margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.section-heading h2,
+.home-copy h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.carousel {
+    max-width: 54rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-slide {
+    display: none;
+    min-height: 17rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid #eee7e4;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 1rem 2.5rem #29243c0d;
+}
+
+.carousel-slide.is-active {
+    display: block;
+}
+
+.carousel-slide h3 {
+    margin: 0;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.carousel-slide > p:last-child,
+.home-copy > p:last-child {
+    max-width: 48rem;
+    color: #625d70;
+    font-size: 1.02rem;
+    line-height: 1.8;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.carousel-arrow,
+.carousel-indicators button {
+    display: grid;
+    place-items: center;
+    border: 1px solid #d9d1dc;
+    background: #fff;
+    color: #5a3768;
+    cursor: pointer;
+}
+
+.carousel-arrow {
+    width: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-indicators button {
+    width: 0.7rem;
+    aspect-ratio: 1;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.carousel-indicators button[aria-current="true"] {
+    border-color: #5a3768;
+    background: #5a3768;
+}
+
+.home-copy {
+    padding-block: 0 1rem;
+}
+
+.home-copy h2 {
+    max-width: 25ch;
+}
+
 :focus-visible {
     outline: 3px solid #d38cae;
     outline-offset: 3px;
