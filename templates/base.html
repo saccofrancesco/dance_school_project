@@ -1,0 +1,104 @@
+{% load static %}
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dance School{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Navigazione principale">
+            <a class="brand" href="{% url 'test' %}" aria-label="Dance School, pagina iniziale">
+                <span class="brand-mark" aria-hidden="true">DS</span>
+                <span class="brand-name">Dance School</span>
+            </a>
+
+            <div class="nav-links">
+                <a class="nav-link" href="/about.html">Chi siamo</a>
+                <a class="nav-link" href="#register-modal" data-modal-open="register-modal">Registrati</a>
+                <a class="nav-link nav-link--accent" href="#login-modal" data-modal-open="login-modal">Accedi</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <span>© {% now "Y" %} Dance School</span>
+            <!-- Sostituisci questi recapiti con quelli reali della scuola. -->
+            <div class="footer-contact">
+                <a href="tel:+390000000000">Telefono: +39 000 000 0000</a>
+                <a href="mailto:info@scuoladidanza.it">Email: info@scuoladidanza.it</a>
+            </div>
+        </div>
+    </footer>
+
+    <dialog class="modal" id="register-modal" aria-labelledby="register-title">
+        <div class="modal-content">
+            <button class="modal-close" type="button" data-modal-close aria-label="Chiudi">×</button>
+            <h2 id="register-title">Crea il tuo account</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="register-first-name">Nome</label>
+                <input id="register-first-name" name="nome" type="text" autocomplete="given-name" required>
+
+                <label for="register-last-name">Cognome</label>
+                <input id="register-last-name" name="cognome" type="text" autocomplete="family-name" required>
+
+                <label for="register-email">Email</label>
+                <input id="register-email" name="email" type="email" autocomplete="email" required>
+
+                <button class="form-submit" type="submit">Registrati</button>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog class="modal" id="login-modal" aria-labelledby="login-title">
+        <div class="modal-content">
+            <button class="modal-close" type="button" data-modal-close aria-label="Chiudi">×</button>
+            <h2 id="login-title">Accedi</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="login-username">Username</label>
+                <input id="login-username" name="username" type="text" autocomplete="username" required>
+
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+
+                <button class="form-submit" type="submit">Accedi</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+        document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
+            trigger.addEventListener("click", (event) => {
+                event.preventDefault();
+                const dialog = document.getElementById(trigger.dataset.modalOpen);
+                if (dialog && typeof dialog.showModal === "function") {
+                    dialog.showModal();
+                }
+            });
+        });
+
+        document.querySelectorAll("[data-modal-close]").forEach((trigger) => {
+            trigger.addEventListener("click", () => trigger.closest("dialog")?.close());
+        });
+
+        document.querySelectorAll("dialog.modal").forEach((dialog) => {
+            dialog.addEventListener("click", (event) => {
+                if (event.target === dialog) {
+                    dialog.close();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
