@@ -3,16 +3,22 @@
 {% block title %}{{ day.name }} - Dance School{% endblock %}
 
 {% block content %}
-    <article>
-        <header>
-            <h1>{{ day.name }}</h1>
+    <article class="detail-page">
+        <header class="page-header">
+            <div class="page-heading">
+                <p class="page-kicker">Giorno</p>
+                <h1>{{ day.name }}</h1>
+            </div>
         </header>
-        <dl>
-            <dt>ID</dt>
-            <dd>{{ day.pk }}</dd>
-
-            <dt>Number</dt>
-            <dd>{{ day.number }}</dd>
+        <dl class="detail-grid">
+            <div class="detail-item">
+                <dt>ID</dt>
+                <dd>{{ day.pk }}</dd>
+            </div>
+            <div class="detail-item">
+                <dt>Numero</dt>
+                <dd>{{ day.number }}</dd>
+            </div>
         </dl>
         <p class="detail-actions">
             <a class="button" href="{% url 'day_of_the_week_update' pk=day.pk %}">Modifica</a>
