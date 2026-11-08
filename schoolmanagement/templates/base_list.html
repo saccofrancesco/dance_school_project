@@ -1,17 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="table-scroll">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    {% block list-header %}{% endblock %}
-                </tr>
-            </thead>
-            <tbody>
-                {% block list-body %}{% endblock %}
-            </tbody>
-        </table>
-    </div>
-    {% block add-new %}{% endblock %}
+    <section class="page-section" aria-labelledby="page-title">
+        <header class="page-header">
+            <div class="page-heading">
+                <h1 id="page-title">{% block page_heading %}{% endblock %}</h1>
+                <p class="page-description">{% block page_description %}{% endblock %}</p>
+            </div>
+            {% block add-new %}{% endblock %}
+        </header>
+        {% block table_hint %}{% endblock %}
+        <div class="table-scroll" role="region" aria-labelledby="page-title" tabindex="0">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        {% block list-header %}{% endblock %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% block list-body %}{% endblock %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 {% endblock %}
