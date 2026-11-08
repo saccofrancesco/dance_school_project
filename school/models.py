@@ -2,8 +2,8 @@ from django.db import models
 
 
 class DayOfTheWeek(models.Model):
-    number = models.PositiveSmallIntegerField()
-    name = models.CharField(max_length=20)
+    number = models.IntegerField()
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -11,14 +11,14 @@ class DayOfTheWeek(models.Model):
 
 class Classroom(models.Model):
     name = models.CharField(max_length=100)
-    capacity = models.PositiveIntegerField()
+    capacity = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.capacity} posti)"
 
 
 class Course(models.Model):
-    subject = models.CharField(max_length=150)
+    subject = models.CharField(max_length=100)
     day_of_the_week = models.ForeignKey(
         DayOfTheWeek,
         on_delete=models.CASCADE,
@@ -37,4 +37,4 @@ class Course(models.Model):
     )
 
     def __str__(self):
-        return self.subject
+        return f"{self.subject} ({self.day_of_the_week} alle {self.starting_hour:%H:%M})"
