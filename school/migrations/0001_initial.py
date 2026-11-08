@@ -27,6 +27,14 @@ class Migration(migrations.Migration):
                 ),
                 ("name", models.CharField(max_length=100)),
                 ("capacity", models.IntegerField()),
+                (
+                    "school",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="classrooms",
+                        to="schoolmanagement.school",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
