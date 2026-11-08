@@ -3,41 +3,51 @@
 {% block title %}{{ school.name }} - Dance School{% endblock %}
 
 {% block content %}
-    <article>
-        <header>
-            <h1>{{ school.name }}</h1>
+    <article class="detail-page">
+        <header class="page-header">
+            <div class="page-heading">
+                <p class="page-kicker">Sede</p>
+                <h1>{{ school.name }}</h1>
+            </div>
         </header>
 
-        <dl>
-            <dt>Address</dt>
-            <dd>{{ school.full_address }}</dd>
-
-            <dt>Country</dt>
-            <dd>{{ school.country }}</dd>
-
-            <dt>Website</dt>
-            <dd>
-                {% if school.website %}
-                    <a href="{{ school.website }}">{{ school.website }}</a>
-                {% else %}
-                    —
-                {% endif %}
-            </dd>
-
-            <dt>Phone</dt>
-            <dd>{{ school.phone|default:"—" }}</dd>
-
-            <dt>Email</dt>
-            <dd>
-                {% if school.email %}
-                    <a href="mailto:{{ school.email }}">{{ school.email }}</a>
-                {% else %}
-                    —
-                {% endif %}
-            </dd>
-
-            <dt>Partita IVA</dt>
-            <dd>{{ school.vat|default:"—" }}</dd>
+        <dl class="detail-grid">
+            <div class="detail-item">
+                <dt>Indirizzo</dt>
+                <dd>{{ school.full_address }}</dd>
+            </div>
+            <div class="detail-item">
+                <dt>Paese</dt>
+                <dd>{{ school.country }}</dd>
+            </div>
+            <div class="detail-item">
+                <dt>Sito web</dt>
+                <dd>
+                    {% if school.website %}
+                        <a href="{{ school.website }}">{{ school.website }}</a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </dd>
+            </div>
+            <div class="detail-item">
+                <dt>Telefono</dt>
+                <dd>{{ school.phone|default:"—" }}</dd>
+            </div>
+            <div class="detail-item">
+                <dt>Email</dt>
+                <dd>
+                    {% if school.email %}
+                        <a href="mailto:{{ school.email }}">{{ school.email }}</a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </dd>
+            </div>
+            <div class="detail-item">
+                <dt>Partita IVA</dt>
+                <dd>{{ school.vat|default:"—" }}</dd>
+            </div>
         </dl>
         <p class="detail-actions">
             <a class="button button--secondary" href="{% url 'school_list' %}">Torna alle sedi</a>
