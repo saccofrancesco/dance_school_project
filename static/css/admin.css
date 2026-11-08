@@ -1,0 +1,186 @@
+/* Extend Django's theme variables so its own components retain their behavior. */
+html[data-theme="light"],
+:root {
+    --primary: #315747;
+    --secondary: #315747;
+    --accent: #d8a68d;
+    --primary-fg: #fffefa;
+    --body-fg: #26342c;
+    --body-bg: #fffefa;
+    --body-quiet-color: #627067;
+    --body-medium-color: #4a594f;
+    --body-loud-color: #203d31;
+    --header-color: #fffefa;
+    --header-branding-color: #fffefa;
+    --header-bg: #203d31;
+    --header-link-color: #fffefa;
+    --breadcrumbs-fg: #d9e3db;
+    --breadcrumbs-link-fg: #fffefa;
+    --breadcrumbs-bg: #315747;
+    --link-fg: #315747;
+    --link-hover-color: #203d31;
+    --link-selected-fg: #203d31;
+    --hairline-color: #d9ded5;
+    --border-color: #c4cdc3;
+    --error-fg: #a13d35;
+    --darkened-bg: #f6f5ef;
+    --selected-bg: #e6ede4;
+    --selected-row: #eaf0e7;
+    --button-fg: #fffefa;
+    --button-bg: #315747;
+    --button-hover-bg: #203d31;
+    --default-button-bg: #203d31;
+    --default-button-hover-bg: #315747;
+    --close-button-bg: #627067;
+    --close-button-hover-bg: #4a594f;
+    --delete-button-bg: #a13d35;
+    --delete-button-hover-bg: #802f29;
+    --object-tools-bg: #315747;
+    --object-tools-hover-bg: #203d31;
+    --font-family-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --admin-canvas: #f6f5ef;
+    --admin-focus: #96543d;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]),
+    html[data-theme="auto"] {
+        --primary: #527c62;
+        --secondary: #527c62;
+        --accent: #d8a68d;
+        --body-fg: #e5ede6;
+        --body-bg: #1d2b22;
+        --body-quiet-color: #b5c6b9;
+        --body-medium-color: #d0ded2;
+        --body-loud-color: #f7faf6;
+        --header-bg: #13251a;
+        --breadcrumbs-fg: #d5e4d7;
+        --breadcrumbs-bg: #294b38;
+        --link-fg: #c4e0cb;
+        --link-hover-color: #e1f2e5;
+        --link-selected-fg: #d5e9d9;
+        --hairline-color: #405347;
+        --border-color: #596e60;
+        --error-fg: #f2998e;
+        --darkened-bg: #17231b;
+        --selected-bg: #30473a;
+        --selected-row: #334e3c;
+        --button-bg: #426b50;
+        --button-hover-bg: #527c62;
+        --default-button-bg: #315747;
+        --default-button-hover-bg: #426b50;
+        --close-button-bg: #52665a;
+        --close-button-hover-bg: #647d6c;
+        --delete-button-bg: #9d443d;
+        --delete-button-hover-bg: #b8584f;
+        --object-tools-bg: #426b50;
+        --object-tools-hover-bg: #527c62;
+        --admin-canvas: #131e17;
+        --admin-focus: #d8a68d;
+        color-scheme: dark;
+    }
+}
+
+html[data-theme="dark"] {
+    --primary: #527c62;
+    --secondary: #527c62;
+    --accent: #d8a68d;
+    --body-fg: #e5ede6;
+    --body-bg: #1d2b22;
+    --body-quiet-color: #b5c6b9;
+    --body-medium-color: #d0ded2;
+    --body-loud-color: #f7faf6;
+    --header-bg: #13251a;
+    --breadcrumbs-fg: #d5e4d7;
+    --breadcrumbs-bg: #294b38;
+    --link-fg: #c4e0cb;
+    --link-hover-color: #e1f2e5;
+    --link-selected-fg: #d5e9d9;
+    --hairline-color: #405347;
+    --border-color: #596e60;
+    --error-fg: #f2998e;
+    --darkened-bg: #17231b;
+    --selected-bg: #30473a;
+    --selected-row: #334e3c;
+    --button-bg: #426b50;
+    --button-hover-bg: #527c62;
+    --default-button-bg: #315747;
+    --default-button-hover-bg: #426b50;
+    --close-button-bg: #52665a;
+    --close-button-hover-bg: #647d6c;
+    --delete-button-bg: #9d443d;
+    --delete-button-hover-bg: #b8584f;
+    --object-tools-bg: #426b50;
+    --object-tools-hover-bg: #527c62;
+    --admin-canvas: #131e17;
+    --admin-focus: #d8a68d;
+    color-scheme: dark;
+}
+
+body {
+    background: var(--admin-canvas);
+}
+
+#branding {
+    align-items: center;
+}
+
+#site-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+#site-name a:link,
+#site-name a:visited {
+    color: var(--header-link-color);
+}
+
+.admin-brand-dot {
+    color: var(--accent);
+}
+
+.admin-brand-label {
+    margin-inline-start: 0.7rem;
+    color: var(--header-link-color);
+    font-family: var(--font-family-primary);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+#content h1 {
+    color: var(--body-loud-color);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+}
+
+.module {
+    background: var(--body-bg);
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+select,
+textarea {
+    border-radius: 2px;
+}
+
+.login #container {
+    min-width: 0;
+    border-radius: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--admin-focus);
+    outline-offset: 2px;
+}
