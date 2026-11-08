@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.urls import reverse
 
@@ -14,7 +15,7 @@ class SchoolViewsTests(TestCase):
             "street": "Via Esempio 1",
             "city": "Milano",
             "province": "MI",
-            "zip": "20121",
+            "zip_code": "20121",
             "country": "Italia",
             "website": "https://example.com",
             "phone": "+39 02 0000 0001",
@@ -64,7 +65,7 @@ class SchoolViewsTests(TestCase):
         self.assertContains(response, self.school.street)
         self.assertContains(response, self.school.city)
         self.assertContains(response, self.school.province)
-        self.assertContains(response, self.school.zip)
+        self.assertContains(response, self.school.zip_code)
         self.assertContains(response, self.school.country)
         self.assertContains(response, self.school.website)
         self.assertContains(response, self.school.phone)
@@ -79,3 +80,26 @@ class SchoolViewsTests(TestCase):
 
     def test_school_string_representation_is_its_name(self):
         self.assertEqual(str(self.school), self.school.name)
+
+    def test_optional_contact_fields_can_be_empty(self):
+        school_without_contacts = self.create_school(
+            name="Dance School Without Contacts",
+            website=None,
+            phone=None,
+            email=None,
+            vat=None,
+        )
+
+        response = self.client.get(
+            reverse("school_detail", kwargs={"pk": school_without_contacts.pk})
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, school_without_contacts.full_address)
+        self.assertNotContains(response, 'href="None"')
+
+    def test_school_model_rejects_name_longer_than_100_characters(self):
+        self.school.name = "x" * 101
+
+        with self.assertRaises(ValidationError):
+            self.school.full_clean()
