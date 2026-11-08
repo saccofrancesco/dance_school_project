@@ -9,32 +9,38 @@
         </header>
 
         <dl>
-            <dt>Street</dt>
-            <dd>{{ school.street }}</dd>
-
-            <dt>City</dt>
-            <dd>{{ school.city }}</dd>
-
-            <dt>Province</dt>
-            <dd>{{ school.province }}</dd>
-
-            <dt>ZIP</dt>
-            <dd>{{ school.zip }}</dd>
+            <dt>Address</dt>
+            <dd>{{ school.full_address }}</dd>
 
             <dt>Country</dt>
             <dd>{{ school.country }}</dd>
 
             <dt>Website</dt>
-            <dd><a href="{{ school.website }}">{{ school.website }}</a></dd>
+            <dd>
+                {% if school.website %}
+                    <a href="{{ school.website }}">{{ school.website }}</a>
+                {% else %}
+                    —
+                {% endif %}
+            </dd>
 
             <dt>Phone</dt>
-            <dd>{{ school.phone }}</dd>
+            <dd>{{ school.phone|default:"—" }}</dd>
 
             <dt>Email</dt>
-            <dd><a href="mailto:{{ school.email }}">{{ school.email }}</a></dd>
+            <dd>
+                {% if school.email %}
+                    <a href="mailto:{{ school.email }}">{{ school.email }}</a>
+                {% else %}
+                    —
+                {% endif %}
+            </dd>
 
             <dt>Partita IVA</dt>
-            <dd>{{ school.vat }}</dd>
+            <dd>{{ school.vat|default:"—" }}</dd>
         </dl>
+        <p class="detail-actions">
+            <a class="button button--secondary" href="{% url 'school_list' %}">Torna alle sedi</a>
+        </p>
     </article>
 {% endblock %}
