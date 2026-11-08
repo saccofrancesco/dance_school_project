@@ -4,9 +4,14 @@
 
 {% block content %}
     <section class="form-page">
-        <p class="eyebrow">Gestione corsi</p>
-        <h1>Elimina il corso</h1>
-        <p>Confermi l’eliminazione di “{{ course.subject }}”?</p>
+        <header class="page-header">
+            <a class="back-link" href="{% url 'course_detail' pk=course.pk %}">← Dettaglio corso</a>
+            <h1>Elimina corso</h1>
+        </header>
+        <div class="delete-summary">
+            <p>Vuoi eliminare <strong>{{ course.subject }}</strong>?</p>
+            <p>L’operazione non può essere annullata.</p>
+        </div>
         <form class="object-form" method="post">
             {% csrf_token %}
             <div class="form-actions">

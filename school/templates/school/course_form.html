@@ -1,18 +1,53 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}{% if object.pk %}Modifica corso{% else %}Aggiungi corso{% endif %} - Dance School{% endblock %}
 
 {% block content %}
     <section class="form-page">
-        <p class="eyebrow">Gestione corsi</p>
-        <h1>{% if object.pk %}Modifica il corso{% else %}Aggiungi un corso{% endif %}</h1>
-        <form class="object-form" method="post">
+        <header class="page-header">
+            <a class="back-link" href="{% url 'course_list' %}">← Tutti i corsi</a>
+            <h1>{% if object.pk %}Modifica corso{% else %}Nuovo corso{% endif %}</h1>
+        </header>
+        {% language "it" %}
+        <form class="object-form" method="post" novalidate>
             {% csrf_token %}
-            {{ form.as_p }}
+            {% if form.errors %}
+                <div class="form-errors" role="alert">
+                    <p>Non è stato possibile salvare. Controlla i dati inseriti.</p>
+                    {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+                    {% for field in form.hidden_fields %}
+                        {% for error in field.errors %}<p>{{ error }}</p>{% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% for field in form.hidden_fields %}{{ field }}{% endfor %}
+            {% for field in form.visible_fields %}
+                <div class="form-field{% if field.errors %} form-field--invalid{% endif %}">
+                    <label for="{{ field.id_for_label }}">
+                        {% if field.name == "subject" %}Disciplina
+                        {% elif field.name == "starting_hour" %}Ora di inizio
+                        {% elif field.name == "day_of_the_week" %}Giorno
+                        {% elif field.name == "classroom" %}Aula
+                        {% elif field.name == "school" %}Sede
+                        {% else %}{{ field.label }}{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <div class="field-help" id="{{ field.auto_id }}_helptext">{{ field.help_text }}</div>
+                    {% endif %}
+                    {% if field.errors %}
+                        <ul class="errorlist" id="{{ field.auto_id }}_error">
+                            {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
             <div class="form-actions">
-                <button class="button" type="submit">Salva</button>
+                <button class="button" type="submit">Salva corso</button>
                 <a class="button button--secondary" href="{% url 'course_list' %}">Annulla</a>
             </div>
         </form>
+        {% endlanguage %}
     </section>
 {% endblock %}

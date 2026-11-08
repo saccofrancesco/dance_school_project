@@ -1,40 +1,45 @@
 {% extends "base_list.html" %}
 
 {% block title %}Corsi - Dance School{% endblock %}
+{% block page_heading %}Corsi{% endblock %}
+{% block page_description %}Orari, aule e sedi dei corsi.{% endblock %}
+{% block table_hint %}<p class="table-hint">Scorri per vedere tutte le colonne <span aria-hidden="true">→</span></p>{% endblock %}
 
 {% block list-header %}
     <th scope="col">ID</th>
-    <th scope="col">Subject</th>
-    <th scope="col">Day</th>
-    <th scope="col">Starting hour</th>
-    <th scope="col">Classroom</th>
-    <th scope="col">School</th>
-    <th scope="col">Actions</th>
+    <th scope="col">Corso</th>
+    <th scope="col">Giorno</th>
+    <th scope="col">Orario</th>
+    <th scope="col">Aula</th>
+    <th scope="col">Sede</th>
+    <th scope="col">Azioni</th>
 {% endblock %}
 
 {% block list-body %}
     {% for object in courses %}
         <tr>
-            <td>{{ object.pk }}</td>
-            <td><a href="{% url 'course_detail' pk=object.pk %}">{{ object.subject }}</a></td>
+            <td class="table-id">{{ object.pk }}</td>
+            <td class="table-primary"><a href="{% url 'course_detail' pk=object.pk %}">{{ object.subject }}</a></td>
             <td>{{ object.day_of_the_week.name }}</td>
             <td>{{ object.starting_hour|time:"H:i" }}</td>
             <td>{{ object.classroom.name }}</td>
             <td>{{ object.school.name }}</td>
-            <td class="table-actions">
-                <a class="text-action" href="{% url 'course_update' pk=object.pk %}">Modifica</a>
-                <a class="text-action text-action--danger" href="{% url 'course_delete' pk=object.pk %}">Elimina</a>
+            <td>
+                <div class="table-actions">
+                    <a class="text-action" href="{% url 'course_update' pk=object.pk %}" aria-label="Modifica {{ object.subject }}">Modifica</a>
+                    <a class="text-action text-action--danger" href="{% url 'course_delete' pk=object.pk %}" aria-label="Elimina {{ object.subject }}">Elimina</a>
+                </div>
             </td>
         </tr>
     {% empty %}
         <tr>
-            <td colspan="7">Nessun corso disponibile.</td>
+            <td class="table-empty" colspan="7">Nessun corso disponibile.</td>
         </tr>
     {% endfor %}
 {% endblock %}
 
 {% block add-new %}
     <p class="list-actions">
-        <a class="button" href="{% url 'course_create' %}">Aggiungi un corso</a>
+        <a class="button" href="{% url 'course_create' %}">Aggiungi corso</a>
     </p>
 {% endblock %}
