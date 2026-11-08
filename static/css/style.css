@@ -651,6 +651,18 @@ main {
     font-size: 1.65rem;
 }
 
+.related-section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+}
+
+.related-section-heading h2 {
+    margin-bottom: 1rem;
+}
+
 .related-list {
     margin: 0;
     padding: 0;
