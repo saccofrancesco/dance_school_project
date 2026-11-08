@@ -12,7 +12,7 @@
 {% block list-body %}
     {% for object in schools %}
         <tr>
-            <td>{{ object.name }}</td>
+            <td><a href="{% url 'school_detail' pk=object.pk %}">{{ object.name }}</a></td>
             <td>{{ object.street }}</td>
             <td>{{ object.phone }}</td>
             <td>{{ object.email }}</td>
