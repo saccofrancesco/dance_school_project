@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=100)),
-                ("capacity", models.PositiveIntegerField()),
+                ("capacity", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
@@ -41,8 +41,8 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("number", models.PositiveSmallIntegerField()),
-                ("name", models.CharField(max_length=20)),
+                ("number", models.IntegerField()),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("subject", models.CharField(max_length=150)),
+                ("subject", models.CharField(max_length=100)),
                 ("starting_hour", models.TimeField()),
                 (
                     "classroom",
