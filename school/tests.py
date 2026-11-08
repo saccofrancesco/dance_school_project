@@ -11,7 +11,6 @@ from schoolmanagement.models import School
 class SchoolViewsTests(TestCase):
     def setUp(self):
         self.day = DayOfTheWeek.objects.create(number=1, name="Lunedì")
-        self.classroom = Classroom.objects.create(name="Sala A", capacity=20)
         self.school = School.objects.create(
             name="Danza Aurora",
             street="Via Esempio 1",
@@ -23,6 +22,9 @@ class SchoolViewsTests(TestCase):
             phone="+39 02 0000 0001",
             email="milano@example.com",
             vat="00000000001",
+        )
+        self.classroom = Classroom.objects.create(
+            name="Sala A", capacity=20, school=self.school
         )
         self.course = Course.objects.create(
             subject="Danza classica",

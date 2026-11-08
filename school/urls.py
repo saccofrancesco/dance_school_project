@@ -8,6 +8,7 @@ from .views import (
     CourseDetailView,
     CourseListView,
     CourseUpdateView,
+    classrooms_for_school,
     DayOfTheWeekCreateView,
     DayOfTheWeekDetailView,
     DayOfTheWeekListView,
@@ -28,6 +29,11 @@ urlpatterns = [
         name="day_of_the_week_update",
     ),
     path("classrooms/", ClassroomListView.as_view(), name="classroom_list"),
+    path(
+        "classrooms/by-school/",
+        classrooms_for_school,
+        name="classrooms_for_school",
+    ),
     path(
         "classrooms/<int:pk>/",
         ClassroomDetailView.as_view(),
