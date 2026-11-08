@@ -21,8 +21,7 @@
                 <a class="nav-link" href="{% url 'day_of_the_week_list' %}">Giorni</a>
                 <a class="nav-link" href="{% url 'classroom_list' %}">Aule</a>
                 <a class="nav-link" href="{% url 'course_list' %}">Corsi</a>
-                <a class="nav-link" href="#register-modal" data-modal-open="register-modal">Registrati</a>
-                <a class="nav-link nav-link--accent" href="#login-modal" data-modal-open="login-modal">Accedi</a>
+                <a class="nav-link nav-link--accent" href="{% url 'admin:index' %}">Admin</a>
             </div>
         </nav>
     </header>
@@ -44,65 +43,5 @@
         </div>
     </footer>
 
-    <dialog class="modal" id="register-modal" aria-labelledby="register-title">
-        <div class="modal-content">
-            <button class="modal-close" type="button" data-modal-close aria-label="Chiudi">×</button>
-            <h2 id="register-title">Crea il tuo account</h2>
-            <form method="post">
-                {% csrf_token %}
-                <label for="register-first-name">Nome</label>
-                <input id="register-first-name" name="nome" type="text" autocomplete="given-name" required>
-
-                <label for="register-last-name">Cognome</label>
-                <input id="register-last-name" name="cognome" type="text" autocomplete="family-name" required>
-
-                <label for="register-email">Email</label>
-                <input id="register-email" name="email" type="email" autocomplete="email" required>
-
-                <button class="form-submit" type="submit">Registrati</button>
-            </form>
-        </div>
-    </dialog>
-
-    <dialog class="modal" id="login-modal" aria-labelledby="login-title">
-        <div class="modal-content">
-            <button class="modal-close" type="button" data-modal-close aria-label="Chiudi">×</button>
-            <h2 id="login-title">Accedi</h2>
-            <form method="post">
-                {% csrf_token %}
-                <label for="login-username">Username</label>
-                <input id="login-username" name="username" type="text" autocomplete="username" required>
-
-                <label for="login-password">Password</label>
-                <input id="login-password" name="password" type="password" autocomplete="current-password" required>
-
-                <button class="form-submit" type="submit">Accedi</button>
-            </form>
-        </div>
-    </dialog>
-
-    <script>
-        document.querySelectorAll("[data-modal-open]").forEach((trigger) => {
-            trigger.addEventListener("click", (event) => {
-                event.preventDefault();
-                const dialog = document.getElementById(trigger.dataset.modalOpen);
-                if (dialog && typeof dialog.showModal === "function") {
-                    dialog.showModal();
-                }
-            });
-        });
-
-        document.querySelectorAll("[data-modal-close]").forEach((trigger) => {
-            trigger.addEventListener("click", () => trigger.closest("dialog")?.close());
-        });
-
-        document.querySelectorAll("dialog.modal").forEach((dialog) => {
-            dialog.addEventListener("click", (event) => {
-                if (event.target === dialog) {
-                    dialog.close();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
