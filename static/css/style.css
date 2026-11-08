@@ -130,91 +130,6 @@ main {
     text-decoration: none;
 }
 
-.modal {
-    width: min(100% - 2rem, 28rem);
-    padding: 0;
-    overflow: visible;
-    border: 0;
-    border-radius: 1rem;
-    background: #fff;
-    color: #24213b;
-    box-shadow: 0 1.5rem 5rem #17132155;
-}
-
-.modal::backdrop {
-    background: #17132199;
-    backdrop-filter: blur(3px);
-}
-
-.modal-content {
-    position: relative;
-    padding: 2rem;
-}
-
-.modal-content h2 {
-    margin: 0 2rem 1.5rem 0;
-    font-size: 1.5rem;
-}
-
-.modal-close {
-    position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    width: 2.4rem;
-    aspect-ratio: 1;
-    border: 0;
-    border-radius: 50%;
-    background: #f4eff3;
-    color: #484359;
-    cursor: pointer;
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-.modal form {
-    display: grid;
-    gap: 0.55rem;
-}
-
-.modal label {
-    margin-top: 0.4rem;
-    font-size: 0.92rem;
-    font-weight: 700;
-}
-
-.modal input {
-    width: 100%;
-    min-height: 2.8rem;
-    padding: 0.65rem 0.75rem;
-    border: 1px solid #d9d1dc;
-    border-radius: 0.5rem;
-    background: #fff;
-    color: inherit;
-    font: inherit;
-}
-
-.modal input:focus {
-    border-color: #8b4b72;
-    outline: 3px solid #8b4b7226;
-}
-
-.form-submit {
-    min-height: 2.9rem;
-    margin-top: 0.8rem;
-    border: 0;
-    border-radius: 0.55rem;
-    background: #5a3768;
-    color: #fff;
-    cursor: pointer;
-    font: inherit;
-    font-weight: 700;
-}
-
-.form-submit:hover,
-.form-submit:focus-visible {
-    background: #43284f;
-}
-
 .home-hero {
     padding: clamp(2rem, 7vw, 4.5rem);
     border-radius: 1.25rem;
@@ -250,10 +165,14 @@ main {
     display: inline-flex;
     min-height: 2.9rem;
     align-items: center;
+    justify-content: center;
     padding: 0.7rem 1.15rem;
+    border: 0;
     border-radius: 999px;
     background: #5a3768;
     color: #fff;
+    cursor: pointer;
+    font: inherit;
     font-weight: 700;
     text-decoration: none;
 }
@@ -261,6 +180,170 @@ main {
 .button:hover,
 .button:focus-visible {
     background: #43284f;
+}
+
+.button--secondary {
+    background: #f1ebf1;
+    color: #484359;
+}
+
+.button--secondary:hover,
+.button--secondary:focus-visible {
+    background: #e5dce7;
+    color: #29243c;
+}
+
+.button--danger {
+    background: #9f3f52;
+}
+
+.button--danger:hover,
+.button--danger:focus-visible {
+    background: #7f2e40;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    border: 1px solid #eee7e4;
+    border-radius: 0.8rem;
+    background: #fff;
+}
+
+.data-table {
+    width: 100%;
+    min-width: 38rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.9rem 1rem;
+    vertical-align: top;
+}
+
+.data-table th {
+    background: #f4eff3;
+    color: #484359;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+.data-table tbody tr + tr td {
+    border-top: 1px solid #eee7e4;
+}
+
+.data-table tbody tr:hover {
+    background: #fcfafc;
+}
+
+.data-table a,
+.text-action {
+    color: #71395c;
+    font-weight: 700;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.8rem;
+    white-space: nowrap;
+}
+
+.text-action--danger {
+    color: #9f3f52 !important;
+}
+
+.list-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.2rem;
+}
+
+.detail-actions,
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+}
+
+.form-page {
+    width: min(100%, 44rem);
+    margin-inline: auto;
+    padding: clamp(1.4rem, 5vw, 2.5rem);
+    border: 1px solid #eee7e4;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 1rem 2.5rem #29243c0d;
+}
+
+.form-page h1 {
+    margin: 0 0 1.5rem;
+}
+
+.object-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.object-form p {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+}
+
+.object-form label {
+    font-weight: 700;
+}
+
+.object-form input,
+.object-form select,
+.object-form textarea {
+    width: 100%;
+    min-height: 2.8rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #d9d1dc;
+    border-radius: 0.5rem;
+    background: #fff;
+    color: inherit;
+    font: inherit;
+}
+
+.object-form input:focus,
+.object-form select:focus,
+.object-form textarea:focus {
+    border-color: #8b4b72;
+    outline: 3px solid #8b4b7226;
+}
+
+.object-form .errorlist {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: #9f3f52;
+}
+
+.object-form .helptext {
+    color: #625d70;
+    font-size: 0.9rem;
+}
+
+.related-section {
+    margin-top: 2rem;
+}
+
+.related-section h2 {
+    font-size: 1.35rem;
+}
+
+.related-list {
+    display: grid;
+    gap: 0.65rem;
+    padding-left: 1.25rem;
+}
+
+.related-list li span {
+    margin-left: 0.4rem;
+    color: #625d70;
 }
 
 .home-carousel,
@@ -382,7 +465,13 @@ main {
         flex-direction: column;
     }
 
-    .modal-content {
-        padding: 1.5rem;
+    .table-actions {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .related-list li span {
+        display: block;
+        margin: 0.2rem 0 0;
     }
 }
