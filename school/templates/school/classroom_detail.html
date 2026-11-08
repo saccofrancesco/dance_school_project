@@ -3,16 +3,22 @@
 {% block title %}{{ classroom.name }} - Dance School{% endblock %}
 
 {% block content %}
-    <article>
-        <header>
-            <h1>{{ classroom.name }}</h1>
+    <article class="detail-page">
+        <header class="page-header">
+            <div class="page-heading">
+                <p class="page-kicker">Aula</p>
+                <h1>{{ classroom.name }}</h1>
+            </div>
         </header>
-        <dl>
-            <dt>ID</dt>
-            <dd>{{ classroom.pk }}</dd>
-
-            <dt>Capacity</dt>
-            <dd>{{ classroom.capacity }}</dd>
+        <dl class="detail-grid">
+            <div class="detail-item">
+                <dt>ID</dt>
+                <dd>{{ classroom.pk }}</dd>
+            </div>
+            <div class="detail-item">
+                <dt>Capienza</dt>
+                <dd>{{ classroom.capacity }}</dd>
+            </div>
         </dl>
 
         <section class="related-section" aria-labelledby="classroom-courses-title">
