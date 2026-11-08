@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% if object.pk %}Modifica corso{% else %}Aggiungi corso{% endif %} - Dance School{% endblock %}
 
@@ -50,4 +51,8 @@
         </form>
         {% endlanguage %}
     </section>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script defer src="{% static 'js/course-classroom-select.js' %}"></script>
 {% endblock %}

@@ -19,6 +19,10 @@
                 <dt>Capienza</dt>
                 <dd>{{ classroom.capacity }}</dd>
             </div>
+            <div class="detail-item">
+                <dt>Sede</dt>
+                <dd><a href="{% url 'school_detail' pk=classroom.school.pk %}">{{ classroom.school.name }}</a></dd>
+            </div>
         </dl>
 
         <section class="related-section" aria-labelledby="classroom-courses-title">

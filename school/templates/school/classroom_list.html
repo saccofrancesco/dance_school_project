@@ -8,6 +8,7 @@
     <th scope="col">ID</th>
     <th scope="col">Nome</th>
     <th scope="col">Capienza</th>
+    <th scope="col">Sede</th>
     <th scope="col">Dettagli</th>
 {% endblock %}
 
@@ -17,11 +18,12 @@
             <td class="table-id">{{ object.pk }}</td>
             <td class="table-primary"><a href="{% url 'classroom_detail' pk=object.pk %}">{{ object.name }}</a></td>
             <td>{{ object.capacity }}</td>
+            <td>{{ object.school.name }}</td>
             <td><a class="text-action" href="{% url 'classroom_detail' pk=object.pk %}" aria-label="Dettagli di {{ object.name }}">Dettagli</a></td>
         </tr>
     {% empty %}
         <tr>
-            <td class="table-empty" colspan="4">Nessuna aula disponibile.</td>
+            <td class="table-empty" colspan="5">Nessuna aula disponibile.</td>
         </tr>
     {% endfor %}
 {% endblock %}
