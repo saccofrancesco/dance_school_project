@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Vai al contenuto</a>
     <header class="site-header">
         <nav class="navbar container" aria-label="Navigazione principale">
             <a class="brand" href="{% url 'home' %}" aria-label="Dance School, pagina iniziale">
@@ -15,18 +16,20 @@
                 <span class="brand-name">Dance School</span>
             </a>
 
+            {% with current=request.resolver_match.url_name %}
             <div class="nav-links">
-                <a class="nav-link" href="{% url 'about' %}">Chi siamo</a>
-                <a class="nav-link" href="{% url 'school_list' %}">Sedi</a>
-                <a class="nav-link" href="{% url 'day_of_the_week_list' %}">Giorni</a>
-                <a class="nav-link" href="{% url 'classroom_list' %}">Aule</a>
-                <a class="nav-link" href="{% url 'course_list' %}">Corsi</a>
-                <a class="nav-link nav-link--accent" href="{% url 'admin:index' %}">Admin</a>
+                <a class="nav-link{% if current == 'about' %} is-active{% endif %}" href="{% url 'about' %}"{% if current == 'about' %} aria-current="page"{% endif %}>Chi siamo</a>
+                <a class="nav-link{% if current == 'course_list' or current == 'course_detail' or current == 'course_create' or current == 'course_update' or current == 'course_delete' %} is-active{% endif %}" href="{% url 'course_list' %}"{% if current == 'course_list' %} aria-current="page"{% endif %}>Corsi</a>
+                <a class="nav-link{% if current == 'school_list' or current == 'school_detail' %} is-active{% endif %}" href="{% url 'school_list' %}"{% if current == 'school_list' %} aria-current="page"{% endif %}>Sedi</a>
+                <a class="nav-link{% if current == 'classroom_list' or current == 'classroom_detail' %} is-active{% endif %}" href="{% url 'classroom_list' %}"{% if current == 'classroom_list' %} aria-current="page"{% endif %}>Aule</a>
+                <a class="nav-link{% if current == 'day_of_the_week_list' or current == 'day_of_the_week_detail' or current == 'day_of_the_week_create' or current == 'day_of_the_week_update' %} is-active{% endif %}" href="{% url 'day_of_the_week_list' %}"{% if current == 'day_of_the_week_list' %} aria-current="page"{% endif %}>Giorni</a>
+                <a class="nav-link nav-link--admin" href="{% url 'admin:index' %}">Admin <span aria-hidden="true">↗</span></a>
             </div>
+            {% endwith %}
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <div class="container">
             {% block content %}{% endblock %}
         </div>
@@ -34,14 +37,17 @@
 
     <footer class="site-footer">
         <div class="container footer-content">
-            <span>© {% now "Y" %} Dance School</span>
-            <!-- Sostituisci questi recapiti con quelli reali della scuola. -->
-            <div class="footer-contact">
-                <a href="tel:+390000000000">Telefono: +39 000 000 0000</a>
-                <a href="mailto:info@danceschool.example">Email: info@danceschool.example</a>
+            <div class="footer-intro">
+                <a class="footer-brand" href="{% url 'home' %}">Dance School<span aria-hidden="true">.</span></a>
+                <p>Corsi, sedi e spazi della scuola.</p>
             </div>
+            <nav class="footer-links" aria-label="Navigazione nel piè di pagina">
+                <a href="{% url 'course_list' %}">Corsi</a>
+                <a href="{% url 'school_list' %}">Sedi</a>
+                <a href="{% url 'about' %}">Chi siamo</a>
+            </nav>
+            <span class="footer-copyright">© {% now "Y" %} Dance School</span>
         </div>
     </footer>
-
 </body>
 </html>

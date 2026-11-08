@@ -4,116 +4,92 @@
 
 {% block content %}
 <section class="home-hero" aria-labelledby="home-title">
-    <p class="eyebrow">Dance School</p>
-    <h1 id="home-title">Trova il tuo ritmo</h1>
-    <p>
-        Un luogo in cui imparare, esprimersi e crescere attraverso la danza.
-        Scopri i nostri corsi e trova il percorso più adatto a te.
-    </p>
-    <a class="button" href="{% url 'about' %}">Scopri la scuola</a>
+    <div class="hero-copy">
+        <p class="eyebrow">Dance School <span aria-hidden="true">/</span> La scuola</p>
+        <h1 id="home-title">Corsi, sedi<br><em>e orari.</em></h1>
+        <p class="hero-lede">Consulta corsi, sedi e orari della scuola.</p>
+        <div class="hero-actions">
+            <a class="button" href="{% url 'course_list' %}">Scopri i corsi <span aria-hidden="true">↗</span></a>
+            <a class="inline-link" href="{% url 'about' %}">Chi siamo <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+    <aside class="hero-index" aria-label="Esplora la scuola">
+        <div class="hero-index-heading"><span>Esplora</span><span>01 — 03</span></div>
+        <ol>
+            <li><a href="{% url 'course_list' %}"><span>01</span><strong>Corsi</strong><span aria-hidden="true">↗</span></a></li>
+            <li><a href="{% url 'school_list' %}"><span>02</span><strong>Sedi</strong><span aria-hidden="true">↗</span></a></li>
+            <li><a href="{% url 'classroom_list' %}"><span>03</span><strong>Aule</strong><span aria-hidden="true">↗</span></a></li>
+        </ol>
+    </aside>
 </section>
 
-<section class="home-carousel" aria-labelledby="news-title">
-    <div class="section-heading">
-        <p class="eyebrow">Vita in sala</p>
-        <h2 id="news-title">Dal mondo Dance School</h2>
+<section class="home-guide" aria-labelledby="guide-title">
+    <div class="home-guide-intro">
+        <p class="eyebrow">La scuola / Informazioni</p>
+        <h2 id="guide-title">Inizia da qui.</h2>
+        <p>Consulta i corsi, visita le sedi o esplora le aule.</p>
     </div>
 
-    <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Articoli della scuola">
+    <div class="carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="Informazioni sulla scuola">
         <div class="carousel-slides" aria-live="polite">
-            <article class="carousel-slide is-active" data-carousel-slide aria-hidden="false">
-                <p class="carousel-category">Prima lezione</p>
-                <h3>Muovi i primi passi</h3>
-                <p>
-                    Vuoi provare un nuovo stile? Una lezione introduttiva è
-                    l’occasione per conoscere l’insegnante, la sala e il gruppo.
-                    Contatta la segreteria per informazioni e disponibilità.
-                </p>
+            <article class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="1 di 3">
+                <p class="carousel-category">01 / Corsi</p>
+                <h3>Trova un corso.</h3>
+                <p>Consulta giorni, orari, sedi e aule dei corsi disponibili.</p>
+                <a class="inline-link" href="{% url 'course_list' %}">Vai ai corsi <span aria-hidden="true">↗</span></a>
             </article>
-
-            <article class="carousel-slide" data-carousel-slide aria-hidden="true">
-                <p class="carousel-category">I nostri corsi</p>
-                <h3>Un percorso per ogni livello</h3>
-                <p>
-                    Dalle basi ai corsi più avanzati, ogni lezione unisce
-                    tecnica, musicalità e movimento. Gli insegnanti ti aiutano
-                    a scegliere il gruppo più adatto alla tua esperienza.
-                </p>
+            <article class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="2 di 3">
+                <p class="carousel-category">02 / Sedi</p>
+                <h3>Trova la sede.</h3>
+                <p>Indirizzi e recapiti disponibili per ogni sede.</p>
+                <a class="inline-link" href="{% url 'school_list' %}">Vai alle sedi <span aria-hidden="true">↗</span></a>
             </article>
-
-            <article class="carousel-slide" data-carousel-slide aria-hidden="true">
-                <p class="carousel-category">Insieme</p>
-                <h3>La danza è anche condivisione</h3>
-                <p>
-                    In sala si impara ad ascoltare la musica e a collaborare
-                    con gli altri. Durante l’anno, lezioni e laboratori offrono
-                    occasioni per crescere e celebrare i propri progressi.
-                </p>
+            <article class="carousel-slide" data-carousel-slide role="group" aria-roledescription="slide" aria-label="3 di 3">
+                <p class="carousel-category">03 / Aule</p>
+                <h3>Scopri gli spazi.</h3>
+                <p>Consulta le aule e i corsi associati a ciascuna.</p>
+                <a class="inline-link" href="{% url 'classroom_list' %}">Vai alle aule <span aria-hidden="true">↗</span></a>
             </article>
         </div>
-
-        <div class="carousel-controls" aria-label="Controlli del carosello">
-            <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Articolo precedente">
-                <span aria-hidden="true">←</span>
-            </button>
-            <div class="carousel-indicators" aria-label="Seleziona un articolo">
-                <button type="button" data-carousel-dot aria-label="Mostra articolo 1" aria-current="true"></button>
-                <button type="button" data-carousel-dot aria-label="Mostra articolo 2" aria-current="false"></button>
-                <button type="button" data-carousel-dot aria-label="Mostra articolo 3" aria-current="false"></button>
+        <div class="carousel-controls" aria-label="Controlli del carosello" hidden>
+            <div class="carousel-indicators" aria-label="Seleziona una pagina">
+                <button type="button" data-carousel-dot aria-label="Mostra pagina 1" aria-current="true"><span></span></button>
+                <button type="button" data-carousel-dot aria-label="Mostra pagina 2" aria-current="false"><span></span></button>
+                <button type="button" data-carousel-dot aria-label="Mostra pagina 3" aria-current="false"><span></span></button>
             </div>
-            <button class="carousel-arrow" type="button" data-carousel-next aria-label="Articolo successivo">
-                <span aria-hidden="true">→</span>
-            </button>
+            <div class="carousel-arrows">
+                <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Pagina precedente">←</button>
+                <button class="carousel-arrow" type="button" data-carousel-next aria-label="Pagina successiva">→</button>
+            </div>
         </div>
     </div>
-</section>
-
-<section class="home-copy" aria-labelledby="welcome-title">
-    <p class="eyebrow">Benvenuti</p>
-    <h2 id="welcome-title">Un posto per imparare e sentirsi a casa</h2>
-    <p>
-        Dance School accoglie bambini, ragazzi e adulti in un ambiente
-        stimolante e inclusivo. Qui puoi scoprire la danza classica, moderna
-        e hip-hop, migliorare la tecnica con gradualità e condividere la tua
-        passione con altri allievi. Se non sai da dove iniziare, scrivici:
-        saremo felici di aiutarti a scegliere.
-    </p>
 </section>
 
 <script>
     (() => {
         const carousel = document.querySelector("[data-carousel]");
-        if (!carousel) {
-            return;
-        }
+        if (!carousel) return;
 
         const slides = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
         const indicators = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+        const controls = carousel.querySelector(".carousel-controls");
         let activeIndex = 0;
 
         const showSlide = (index) => {
             activeIndex = (index + slides.length) % slides.length;
-
             slides.forEach((slide, slideIndex) => {
-                const isActive = slideIndex === activeIndex;
-                slide.classList.toggle("is-active", isActive);
-                slide.setAttribute("aria-hidden", String(!isActive));
+                slide.hidden = slideIndex !== activeIndex;
             });
-
             indicators.forEach((indicator, indicatorIndex) => {
                 indicator.setAttribute("aria-current", String(indicatorIndex === activeIndex));
             });
         };
 
-        carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => {
-            showSlide(activeIndex - 1);
-        });
-        carousel.querySelector("[data-carousel-next]").addEventListener("click", () => {
-            showSlide(activeIndex + 1);
-        });
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener("click", () => showSlide(index));
-        });
+        carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => showSlide(activeIndex - 1));
+        carousel.querySelector("[data-carousel-next]").addEventListener("click", () => showSlide(activeIndex + 1));
+        indicators.forEach((indicator, index) => indicator.addEventListener("click", () => showSlide(index)));
+        showSlide(0);
+        controls.hidden = false;
     })();
 </script>
 {% endblock %}
