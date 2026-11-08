@@ -9,7 +9,6 @@ from .views import (
     DayOfTheWeekListView,
 )
 
-
 urlpatterns = [
     path("days/", DayOfTheWeekListView.as_view(), name="day_of_the_week_list"),
     path(

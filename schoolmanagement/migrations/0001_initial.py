@@ -7,24 +7,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='School',
+            name="School",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150)),
-                ('street', models.CharField(max_length=255)),
-                ('city', models.CharField(max_length=100)),
-                ('province', models.CharField(max_length=100)),
-                ('zip', models.CharField(max_length=20, verbose_name='CAP')),
-                ('country', models.CharField(max_length=100)),
-                ('website', models.URLField()),
-                ('phone', models.CharField(max_length=30)),
-                ('email', models.EmailField(max_length=254)),
-                ('vat', models.CharField(max_length=20, verbose_name='partita IVA')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=150)),
+                ("street", models.CharField(max_length=255)),
+                ("city", models.CharField(max_length=100)),
+                ("province", models.CharField(max_length=100)),
+                ("zip", models.CharField(max_length=20, verbose_name="CAP")),
+                ("country", models.CharField(max_length=100)),
+                ("website", models.URLField()),
+                ("phone", models.CharField(max_length=30)),
+                ("email", models.EmailField(max_length=254)),
+                ("vat", models.CharField(max_length=20, verbose_name="partita IVA")),
             ],
         ),
     ]

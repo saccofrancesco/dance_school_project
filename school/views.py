@@ -30,16 +30,12 @@ class ClassroomDetailView(DetailView):
 class CourseListView(ListView):
     model = Course
     context_object_name = "courses"
-    queryset = Course.objects.select_related(
-        "day_of_the_week", "classroom", "school"
-    )
+    queryset = Course.objects.select_related("day_of_the_week", "classroom", "school")
     template_name = "school/course_list.html"
 
 
 class CourseDetailView(DetailView):
     model = Course
     context_object_name = "course"
-    queryset = Course.objects.select_related(
-        "day_of_the_week", "classroom", "school"
-    )
+    queryset = Course.objects.select_related("day_of_the_week", "classroom", "school")
     template_name = "school/course_detail.html"
