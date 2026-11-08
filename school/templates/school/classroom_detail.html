@@ -8,8 +8,28 @@
             <h1>{{ classroom.name }}</h1>
         </header>
         <dl>
+            <dt>ID</dt>
+            <dd>{{ classroom.pk }}</dd>
+
             <dt>Capacity</dt>
             <dd>{{ classroom.capacity }}</dd>
         </dl>
+
+        <section class="related-section" aria-labelledby="classroom-courses-title">
+            <h2 id="classroom-courses-title">Corsi in questa aula</h2>
+            <ul class="related-list">
+                {% for course in classroom.courses.all %}
+                    <li>
+                        <a href="{% url 'course_detail' pk=course.pk %}">{{ course.subject }}</a>
+                        <span>{{ course.starting_hour|time:"H:i" }} · {{ course.day_of_the_week.name }}</span>
+                    </li>
+                {% empty %}
+                    <li>Nessun corso assegnato a quest’aula.</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <p class="detail-actions">
+            <a class="button button--secondary" href="{% url 'classroom_list' %}">Torna alle aule</a>
+        </p>
     </article>
 {% endblock %}

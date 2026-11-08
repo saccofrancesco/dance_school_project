@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{% if object.pk %}Modifica corso{% else %}Aggiungi corso{% endif %} - Dance School{% endblock %}
+
+{% block content %}
+    <section class="form-page">
+        <p class="eyebrow">Gestione corsi</p>
+        <h1>{% if object.pk %}Modifica il corso{% else %}Aggiungi un corso{% endif %}</h1>
+        <form class="object-form" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-actions">
+                <button class="button" type="submit">Salva</button>
+                <a class="button button--secondary" href="{% url 'course_list' %}">Annulla</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}

@@ -8,8 +8,15 @@
             <h1>{{ day.name }}</h1>
         </header>
         <dl>
+            <dt>ID</dt>
+            <dd>{{ day.pk }}</dd>
+
             <dt>Number</dt>
             <dd>{{ day.number }}</dd>
         </dl>
+        <p class="detail-actions">
+            <a class="button" href="{% url 'day_of_the_week_update' pk=day.pk %}">Modifica</a>
+            <a class="button button--secondary" href="{% url 'day_of_the_week_list' %}">Torna ai giorni</a>
+        </p>
     </article>
 {% endblock %}

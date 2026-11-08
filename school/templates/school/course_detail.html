@@ -8,6 +8,9 @@
             <h1>{{ course.subject }}</h1>
         </header>
         <dl>
+            <dt>ID</dt>
+            <dd>{{ course.pk }}</dd>
+
             <dt>Day</dt>
             <dd>{{ course.day_of_the_week.name }}</dd>
 
@@ -20,5 +23,10 @@
             <dt>School</dt>
             <dd>{{ course.school.name }}</dd>
         </dl>
+        <p class="detail-actions">
+            <a class="button" href="{% url 'course_update' pk=course.pk %}">Modifica</a>
+            <a class="button button--danger" href="{% url 'course_delete' pk=course.pk %}">Elimina</a>
+            <a class="button button--secondary" href="{% url 'course_list' %}">Torna ai corsi</a>
+        </p>
     </article>
 {% endblock %}

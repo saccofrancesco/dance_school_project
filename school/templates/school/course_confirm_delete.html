@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Elimina corso - Dance School{% endblock %}
+
+{% block content %}
+    <section class="form-page">
+        <p class="eyebrow">Gestione corsi</p>
+        <h1>Elimina il corso</h1>
+        <p>Confermi l’eliminazione di “{{ course.subject }}”?</p>
+        <form class="object-form" method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button class="button button--danger" type="submit">Conferma eliminazione</button>
+                <a class="button button--secondary" href="{% url 'course_detail' pk=course.pk %}">Annulla</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}

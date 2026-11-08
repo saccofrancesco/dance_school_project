@@ -3,19 +3,31 @@
 {% block title %}Giorni della settimana - Dance School{% endblock %}
 
 {% block list-header %}
+    <th scope="col">ID</th>
     <th scope="col">Number</th>
     <th scope="col">Name</th>
+    <th scope="col">Actions</th>
 {% endblock %}
 
 {% block list-body %}
     {% for object in days %}
         <tr>
+            <td>{{ object.pk }}</td>
             <td>{{ object.number }}</td>
             <td><a href="{% url 'day_of_the_week_detail' pk=object.pk %}">{{ object.name }}</a></td>
+            <td>
+                <a class="text-action" href="{% url 'day_of_the_week_update' pk=object.pk %}">Modifica</a>
+            </td>
         </tr>
     {% empty %}
         <tr>
-            <td colspan="2">Nessun giorno disponibile.</td>
+            <td colspan="4">Nessun giorno disponibile.</td>
         </tr>
     {% endfor %}
+{% endblock %}
+
+{% block add-new %}
+    <p class="list-actions">
+        <a class="button" href="{% url 'day_of_the_week_create' %}">Aggiungi un giorno</a>
+    </p>
 {% endblock %}

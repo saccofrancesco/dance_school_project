@@ -3,19 +3,23 @@
 {% block title %}Aule - Dance School{% endblock %}
 
 {% block list-header %}
+    <th scope="col">ID</th>
     <th scope="col">Name</th>
     <th scope="col">Capacity</th>
+    <th scope="col">Details</th>
 {% endblock %}
 
 {% block list-body %}
     {% for object in classrooms %}
         <tr>
+            <td>{{ object.pk }}</td>
             <td><a href="{% url 'classroom_detail' pk=object.pk %}">{{ object.name }}</a></td>
             <td>{{ object.capacity }}</td>
+            <td><a class="text-action" href="{% url 'classroom_detail' pk=object.pk %}">Mostra</a></td>
         </tr>
     {% empty %}
         <tr>
-            <td colspan="2">Nessuna aula disponibile.</td>
+            <td colspan="4">Nessuna aula disponibile.</td>
         </tr>
     {% endfor %}
 {% endblock %}
