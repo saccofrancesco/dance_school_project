@@ -49,6 +49,44 @@
                 <dd>{{ school.vat|default:"—" }}</dd>
             </div>
         </dl>
+
+        <section class="related-section" aria-labelledby="school-classrooms-title">
+            <div class="related-section-heading">
+                <h2 id="school-classrooms-title">Aule della sede</h2>
+                <a class="text-action" href="{% url 'classroom_list' %}">Tutte le aule</a>
+            </div>
+            <ul class="related-list">
+                {% for classroom in school.classrooms.all %}
+                    <li>
+                        <a href="{% url 'classroom_detail' pk=classroom.pk %}">{{ classroom.name }}</a>
+                        <span>{{ classroom.capacity }} posti</span>
+                    </li>
+                {% empty %}
+                    <li>Questa sede non ha ancora aule associate.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="related-section" aria-labelledby="school-courses-title">
+            <div class="related-section-heading">
+                <h2 id="school-courses-title">Corsi della sede</h2>
+                <a class="text-action" href="{% url 'course_list' %}">Tutti i corsi</a>
+            </div>
+            <ul class="related-list">
+                {% for course in school.courses.all %}
+                    <li>
+                        <a href="{% url 'course_detail' pk=course.pk %}">{{ course.subject }}</a>
+                        <span>
+                            {{ course.day_of_the_week.name }} · {{ course.starting_hour|time:"H:i" }} ·
+                            <a href="{% url 'classroom_detail' pk=course.classroom.pk %}">{{ course.classroom.name }}</a>
+                        </span>
+                    </li>
+                {% empty %}
+                    <li>Questa sede non ha ancora corsi in programma.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
         <p class="detail-actions">
             <a class="button button--secondary" href="{% url 'school_list' %}">Torna alle sedi</a>
         </p>
