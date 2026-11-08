@@ -11,7 +11,7 @@
     {% for object in days %}
         <tr>
             <td>{{ object.number }}</td>
-            <td>{{ object.name }}</td>
+            <td><a href="{% url 'day_of_the_week_detail' pk=object.pk %}">{{ object.name }}</a></td>
         </tr>
     {% empty %}
         <tr>

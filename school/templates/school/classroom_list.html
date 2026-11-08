@@ -10,7 +10,7 @@
 {% block list-body %}
     {% for object in classrooms %}
         <tr>
-            <td>{{ object.name }}</td>
+            <td><a href="{% url 'classroom_detail' pk=object.pk %}">{{ object.name }}</a></td>
             <td>{{ object.capacity }}</td>
         </tr>
     {% empty %}

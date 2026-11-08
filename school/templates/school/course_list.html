@@ -13,7 +13,7 @@
 {% block list-body %}
     {% for object in courses %}
         <tr>
-            <td>{{ object.subject }}</td>
+            <td><a href="{% url 'course_detail' pk=object.pk %}">{{ object.subject }}</a></td>
             <td>{{ object.day_of_the_week.name }}</td>
             <td>{{ object.starting_hour|time:"H:i" }}</td>
             <td>{{ object.classroom.name }}</td>
